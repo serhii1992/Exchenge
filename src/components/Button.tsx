@@ -9,16 +9,20 @@ type DefaultButtonProps = React.DetailedHTMLProps<
 interface IButtonProps extends Omit<DefaultButtonProps, "ref" | "onClick"> {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   children: ReactNode;
+  appearance?: "primary" | "secondary";
 }
 
 export const Button: FC<IButtonProps> = React.forwardRef<HTMLButtonElement, IButtonProps>(
-  ({ children, onClick, className, disabled, ...props }, ref) => {
+  ({ children, appearance =  "primary", onClick, className, disabled, ...props }, ref) => {
+
     return (
       <>
         <button
           className={cn(
-            "h-8 w-full rounded-2xl bg-violet-50 px-4  duration-300 font-semibold",
-            disabled ? "text-neutral-400" : "hover:outline hover:outline-1 hover:outline-blue-500 ",
+            "w-full rounded-2xl  px-4  duration-300 font-semibold",
+            appearance === "primary" && "bg-pink-500 ",
+            appearance === "secondary" && "bg-slate-200 hover:bg-slate-300",
+            disabled && "text-neutral-400 bg-opacity-30",
             className
           )}
           onClick={onClick}

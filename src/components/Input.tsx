@@ -10,7 +10,7 @@ interface IIProps extends Omit<DefaultInputProps, "ref" | "value" | "onChange"> 
   onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: string) => void;
   value?: string;
   errorMessage?: string;
-  inputType?: "primary";
+  inputType?: "primary" | "secondary";
   startAdornment?: ReactNode;
   endAdornment?: ReactNode;
 }
@@ -29,12 +29,15 @@ export const Input = React.forwardRef<HTMLInputElement, IIProps>(
     },
     ref
   ) => {
+
     const backgroundColors = {
       primary: "bg-transparent",
+      secondary: "bg-violet-50"
     };
 
     const border = {
       primary: "border-none",
+      secondary: "border border-slate-300 rounded-md"
     };
 
     const baseClasses = [
@@ -49,7 +52,7 @@ export const Input = React.forwardRef<HTMLInputElement, IIProps>(
         <div className={cn(baseClasses, className)}>
           {startAdornment}
           <input
-            className={"w-full text-inherit bg-inherit leading-none outline-none px-4 border-none"}
+            className={"w-full text-inherit  bg-inherit leading-none outline-none px-4 border-none"}
             value={value}
             ref={ref}
             onChange={onChange ? (event) => onChange(event, event.target.value) : undefined}

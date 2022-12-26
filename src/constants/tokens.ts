@@ -1,0 +1,15 @@
+import { ETHAdress, IToken } from "../types/tokens";
+
+export const emptyAddress = "0x0000000000000000000000000000000000000000";
+
+export const DEFAULT_TOKENS = [
+  ETHAdress.adress,
+  "0x5C221E77624690fff6dd741493D735a17716c26B", // DAI
+  "0x72710aAA2a81864cECA4B124adD8243f324793FC", // LAK
+  "0xb5c289909a7Fed968deeEC9a54bE043831547bae", // TCAPX
+  "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6", // WETH
+];
+
+export const DEFAULT_LP_TOKENS = [
+  "0x8Db6060D931E4b67343D85fb4e2355b4c96353B2", // Uniswap V2 (UNI-V2)
+];

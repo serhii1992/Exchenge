@@ -1,5 +1,6 @@
 import React from "react";
-import useSmartContractContext from "../hooks/useSmartContractContext";
+import { Link } from "react-router-dom";
+import useSmartContractContext from "../hooks/useWalletContext";
 import { toShortStr } from "../utils/toShortStr";
 import { Button } from "./Button";
 
@@ -9,9 +10,16 @@ export const Header = () => {
   return (
     <div className="h-12 bg-fuchsia-100 flex items-center justify-between">
       <div className="container px-3 mx-auto flex items-center justify-between  text-slate-500 text-lg font-semibold ">
-        <p className="uppercase">exchange</p>
+        <div className="flex gap-12">
+          <Link className="uppercase" to="/">
+            exchange
+          </Link>
+          <div className="text-base text-slate-600 font-normal">
+            <Link to="/pool"> Add Liquidity</Link>
+          </div>
+        </div>
         <div>
-          <Button>
+          <Button className="text-white">
             {currentAccount ? toShortStr({ str: currentAccount }) : "Connecting with wallet"}
           </Button>
         </div>
